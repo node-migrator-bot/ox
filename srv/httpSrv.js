@@ -55,7 +55,7 @@ ox.srv.httpSrv.prototype.getUrlContents_ = function(url) {
 ox.srv.httpSrv.prototype.getContentsImpl_ = function(path, forceCache) {
   var key = this.getPathKey_(path);
   if (this.fileCache_[key]) return this.fileCache_[key];
-  if (!node.path.existsSync(path)) { return null; }
+  if (!node.fs.existsSync(path)) { return null; }
 
   var contents = node.fs.readFileSync(path);
   this.contentTypes_[key] = this.getContentType_(key.split('.').pop());
